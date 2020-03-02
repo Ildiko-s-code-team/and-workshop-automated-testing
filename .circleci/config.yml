@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: cd lab-2-improve-code && npm install
+      - run:
+          name: Running tests
+          command: cd lab-2-improve-code && npm run test:coverage

@@ -7,10 +7,28 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "jest": "^24.0.0"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^24.0.0",
+    "prettier": "1.19.1"
   },
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest ."
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "prettier": "prettier 'src/**/*.js'",
+    "test": "jest",
+    "test:coverage": "jest --coverage --silent"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm run test:coverage"
+    }
+  },
+  "dependencies": {
+    "husky": "^4.2.3",
+    "pretty-quick": "^2.0.1"
   }
 }
